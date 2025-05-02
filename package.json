@@ -4,7 +4,9 @@
   "description": "O brilho de Sirius em nossas Pratas!",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "author": "Álefe Guilherme",
   "license": "MIT",
@@ -12,5 +14,8 @@
     "next": "^15.3.1",
     "react": "19.1",
     "react-dom": "19.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }
