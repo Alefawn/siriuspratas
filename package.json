@@ -1,0 +1,16 @@
+{
+  "name": "siriuspratas",
+  "version": "1.0.0",
+  "description": "O brilho de Sirius em nossas Pratas!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "author": "Álefe Guilherme",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^15.3.1",
+    "react": "19.1",
+    "react-dom": "19.1"
+  }
+}
