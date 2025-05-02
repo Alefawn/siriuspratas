@@ -1,1 +1,1 @@
-O brilho de Sirius em nossas Pratas!
+O brilho de Sirius em sua Prata!
