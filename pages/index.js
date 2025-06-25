@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
+
+const produtos = [
+  {
+    nome: "Pulseira Prata 925 Cristal Fem",
+    preco: "R$ 120,00",
+    imagem: "/media/Pulseira 3 Tri Cristal Fem.jpg",
+    alt: "Pulseira 3 Tri Cristal Fem",
+  },
+  {
+    nome: "Colar de Prata 925 Ruby Fem",
+    preco: "R$159,90",
+    imagem: "/media/Colar Prata Ruby Fem.jpg",
+    alt: "Colar de Prata Ruby Fem",
+  },
+  {
+    nome: "Pulseira de Prata 925 7mm Masc",
+    preco: "R$ 299,90",
+    imagem: "/media/Pulseira Prata Masc 7mm.jpg",
+    alt: "Pulseira de Prata 7mm Masc",
+  },
+];
 
 export default function HomePage() {
+  const [hovered, setHovered] = useState(null);
+
   return (
     <div
       style={{
@@ -35,54 +59,54 @@ export default function HomePage() {
               flexWrap: "wrap",
             }}
           >
-            <div
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                padding: "10px",
-                width: "200px",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/150"
-                alt="Produto 1"
-                style={{ width: "100%", borderRadius: "8px" }}
-              />
-              <h3 style={{ color: "#555" }}>Anel de Prata 925</h3>
-              <p style={{ color: "#777" }}>R$ 120,00</p>
-            </div>
-            <div
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                padding: "10px",
-                width: "200px",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/150"
-                alt="Produto 2"
-                style={{ width: "100%", borderRadius: "8px" }}
-              />
-              <h3 style={{ color: "#555" }}>Colar de Prata</h3>
-              <p style={{ color: "#777" }}>R$ 250,00</p>
-            </div>
-            <div
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                padding: "10px",
-                width: "200px",
-              }}
-            >
-              <img
-                src="https://via.placeholder.com/150"
-                alt="Produto 3"
-                style={{ width: "100%", borderRadius: "8px" }}
-              />
-              <h3 style={{ color: "#555" }}>Pulseira de Prata</h3>
-              <p style={{ color: "#777" }}>R$ 180,00</p>
-            </div>
+            {produtos.map((produto, idx) => (
+              <div
+                key={produto.nome}
+                onMouseEnter={() => setHovered(idx)}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  border: "1px solid #ddd",
+                  borderRadius: "8px",
+                  padding: "10px",
+                  width: "200px",
+                  boxShadow:
+                    hovered === idx ? "0 4px 16px rgba(0,0,0,0.15)" : "none",
+                  transform: hovered === idx ? "scale(1.05)" : "scale(1)",
+                  transition: "all 0.2s",
+                  background: hovered === idx ? "#fafafa" : "#fff",
+                  cursor: "pointer",
+                }}
+              >
+                <Image
+                  src={produto.imagem}
+                  alt={produto.alt}
+                  width={180}
+                  height={180}
+                  style={{
+                    width: "100%",
+                    borderRadius: "8px",
+                    height: "auto",
+                    transition: "box-shadow 0.2s",
+                    boxShadow:
+                      hovered === idx ? "0 2px 8px rgba(0,0,0,0.10)" : "none",
+                  }}
+                />
+                <h3 style={{ color: "#555", margin: "10px 0 5px 0" }}>
+                  {produto.nome}
+                </h3>
+                <p
+                  style={{
+                    color: hovered === idx ? "#222" : "#bbb",
+                    fontWeight: hovered === idx ? "bold" : "normal",
+                    fontSize: "1.1em",
+                    margin: 0,
+                    transition: "color 0.2s, font-weight 0.2s",
+                  }}
+                >
+                  {produto.preco}
+                </p>
+              </div>
+            ))}
           </div>
         </section>
       </main>
